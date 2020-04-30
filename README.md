@@ -34,6 +34,23 @@ Note, for this tool, I decided to allow for only up to three positive and three 
     root     30696  0.0  0.4 798332  4716 ?        Sl   Apr29   0:00 ./phase_one_server --addr=0.0.0.0 --port=8888
     $ kill -TERM 30696
     ```
+    - The contents of the generated `responses.txt` file look similar to the following (example comments):
+
+    ```
+    2020-04-29T16:10:09Z,<source_ip>,neg_c,"I did not like it at all."
+    2020-04-29T16:10:09Z,<source_ip>,pos_a,"Great freedom to develop our application as we wanted"
+    2020-04-29T16:10:09Z,<source_ip>,pos_b,"The simulator was fun because it felt like real users"
+    2020-04-29T16:10:09Z,<source_ip>,pos_c,"The use of industry relevant tools was great"
+    2020-04-29T16:10:09Z,<source_ip>,neg_a,"Course was quite hectic at the start"
+    2020-04-29T16:10:09Z,<source_ip>,neg_b,"The git lecture was meaningless"
+    2020-04-29T16:15:18Z,<other_source_ip>,pos_a,"Lecturers and TAs are really good at presenting relavant stuff, the contents are great!"
+    2020-04-29T16:15:18Z,<other_source_ip>,pos_b,"Guest lecture was great"
+    2020-04-29T16:15:18Z,<other_source_ip>,pos_c,""
+    2020-04-29T16:15:18Z,<other_source_ip>,neg_a,"You should maybe explain contents better."
+    2020-04-29T16:15:18Z,<other_source_ip>,neg_b,""
+    2020-04-29T16:15:18Z,<other_source_ip>,neg_c,""
+    ```
+
   * Phase 2:
     - Now, you start the server for phase two, which serves a web-page to the students on which they can indicate on which comments they agree.
     On Linux you may want to start it like the following:
@@ -48,10 +65,31 @@ Note, for this tool, I decided to allow for only up to three positive and three 
     - There, they can set check-marks next to each comment on which they agree.
     - Once the students are done providing their ratings you can stop the second phase of the evaluation, similar to above.
     - This second phase of evaluation produces a text file `rated_responses.txt`, which contains a line for each comment that was checked respectively.
+    - The contents of the generated `rated_responses.txt` file look similar to the following (example comments; note one line per given check mark ):
+
+    ```
+    neg_45,"This is the 7.5 ECTS course i have spent the most time on since i started at itu. "
+    neg_51,"Some parts has already been covered by other courses"
+    neg_45,"This is the 7.5 ECTS course i have spent the most time on since i started at itu. "
+    neg_51,"Some parts has already been covered by other courses"
+    pos_30,"Most excercises made sense on the weeks which they were introduced. only a very few odd cases."
+    neg_45,"This is the 7.5 ECTS course i have spent the most time on since i started at itu. "
+    pos_30,"Most excercises made sense."
+    ```
+
   * To quickly find the most frequent negative issues to discuss in the plenum, I ran:
 
   ```bash
   sort rated_responses.txt | uniq -c | sort -r | grep "neg_"
+  ```
+
+  Which creates something similar to the following:
+
+  ```
+  26 neg_5,"Long lectures, no time for group work"
+  24 neg_6,"Do not use Talk, use LearnIT instead"
+  23 neg_15,"Some exercises are too large to get up and running within a week."
+  21 neg_53,"Not a fan of 4 hour sessions"
   ```
 
 --------
