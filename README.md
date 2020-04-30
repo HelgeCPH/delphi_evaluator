@@ -83,7 +83,7 @@ Note, for this tool, I decided to allow for only up to three positive and three 
   sort rated_responses.txt | uniq -c | sort -r | grep "neg_"
   ```
 
-  Which creates something similar to the following:
+  Which creates something similar to the following, where the numbers in the first column state how many times a certain negative comment was 'up-voted':
 
   ```
   26 neg_5,"Long lectures, no time for group work"
