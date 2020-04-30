@@ -29,10 +29,10 @@ Note, for this tool, I decided to allow for only up to three positive and three 
     - Once the students are done providing their comments you can stop the first phase of the evaluation, for example, on Linux via:
 
     ```bash
-    ps aux | grep phase
-root     13367  0.0  0.1  14856  1092 pts/1    S+   08:53   0:00 grep --color=auto phase
-root     30696  0.0  0.4 798332  4716 ?        Sl   Apr29   0:00 ./phase_one_server --addr=0.0.0.0 --port=8888
-    kill -TERM 30696
+    $ ps aux | grep phase
+    root     13367  0.0  0.1  14856  1092 pts/1    S+   08:53   0:00 grep --color=auto phase
+    root     30696  0.0  0.4 798332  4716 ?        Sl   Apr29   0:00 ./phase_one_server --addr=0.0.0.0 --port=8888
+    $ kill -TERM 30696
     ```
   * Phase 2:
     - Now, you start the server for phase two, which serves a web-page to the students on which they can indicate on which comments they agree.
